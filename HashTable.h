@@ -147,9 +147,10 @@ void HashTable<ValueType, HashFunction>::remove(const ValueType& value) {
 template <typename ValueType, typename HashFunction>
 template <typename Callable>
 void HashTable<ValueType, HashFunction>::for_each(Callable callable) {
-    std::for_each(_bucket.begin(), _bucket.end(), [&](const auto& ptr) {
-        if (ptr) {
-            std::for_each(ptr->begin(), ptr->end(), callable);
-        }
-    });
+    std::for_each(list.begin(),list.end(),callable);
+    // std::for_each(_bucket.begin(), _bucket.end(), [&](const auto& ptr) {
+    //     if (ptr) {
+    //         std::for_each(ptr->begin(), ptr->end(), callable);
+    //     }
+    // });
 }
